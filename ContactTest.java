@@ -12,7 +12,7 @@ public class ContactTest {
 	}
 
 	@Test
-	public void testsGetId() {
+	public void testsRestrictedConstructor() {
 		Contact contact = new ContactImpl(1, "John Smith");
 		int output = contact.getId();
 		int expected = 1;
