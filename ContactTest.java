@@ -6,7 +6,8 @@ public class ContactTest {
 	@Test
 	public void testsGeneralConstructor() {
 		Contact contact = new ContactImpl(1, "John Smith", "Initial note");
-		testId(contact);
+		testsGetId(contact);
+		testsGetName(contact);
 	}
 
 	@Test(expected= IllegalArgumentException.class)
@@ -32,7 +33,8 @@ public class ContactTest {
 	@Test
 	public void testsRestrictedConstructor() {
 		Contact contact = new ContactImpl(1, "John Smith");
-		testId(contact);
+		testsGetId(contact);
+		testsGetName(contact);
 	}
 
 	@Test(expected= IllegalArgumentException.class)
@@ -50,9 +52,16 @@ public class ContactTest {
 		new ContactImpl(1, null);
 	}
 
-	private void testId(Contact contact) {
+	private void testsGetId(Contact contact) {
 		int output = contact.getId();
 		int expected = 1;
 		assertEquals(expected, output);
 	}
+
+	private void testsGetName(Contact contact) {
+		String output = contact.getName();
+		String expected = "John Smith";
+		assertEquals(expected, output);
+	}
+
 }
