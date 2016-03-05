@@ -1,6 +1,7 @@
 public class ContactImpl implements Contact {
 	private int id;
 	private String name;
+	private String notes;
 
 	/**
 	 * Constructor
@@ -34,6 +35,7 @@ public class ContactImpl implements Contact {
 		} else {
 			this.id = id;
 			this.name = name;
+			this.notes = note;
 		}
 	}
 
@@ -49,6 +51,6 @@ public class ContactImpl implements Contact {
 
 	@Override
 	public String getNotes() {
-		return null;
+		return notes;
 	}
 }
