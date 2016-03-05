@@ -26,4 +26,9 @@ public class ContactTest {
 		new ContactImpl(-1, "John Smith");
 	}
 
+	@Test(expected= NullPointerException.class)
+	public void testsNullName() {
+		new ContactImpl(1, null);
+	}
+
 }
