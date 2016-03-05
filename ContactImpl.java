@@ -25,7 +25,7 @@ public class ContactImpl implements Contact {
 	 * @param note an initial note on the new contact
 	 */
 	public ContactImpl(int id, String name, String note) {
-		if (id == 0) {
+		if (id <= 0) {
 			throw new IllegalArgumentException();
 		} else {
 			this.id = id;
