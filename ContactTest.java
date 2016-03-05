@@ -16,4 +16,9 @@ public class ContactTest {
 		assertEquals(expected, output);
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsZeroId() {
+		new ContactImpl(0, "John Smith");
+	}
+
 }
