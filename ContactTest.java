@@ -13,7 +13,7 @@ public class ContactTest {
 
 	@Test(expected= IllegalArgumentException.class)
 	public void testsGeneralZeroId() {
-		new ContactImpl(1, "John Smith", "Initial note");
+		new ContactImpl(0, "John Smith", "Initial note");
 	}
 
 	@Test
