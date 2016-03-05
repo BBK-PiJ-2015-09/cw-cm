@@ -53,4 +53,8 @@ public class ContactImpl implements Contact {
 	public String getNotes() {
 		return notes;
 	}
+
+	@Override
+	public void addNotes(String note) {
+	}
 }
