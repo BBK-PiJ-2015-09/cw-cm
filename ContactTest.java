@@ -8,6 +8,7 @@ public class ContactTest {
 		Contact contact = new ContactImpl(1, "John Smith", "Initial note");
 		testsGetId(contact);
 		testsGetName(contact);
+		testsGetNotes(contact);
 	}
 
 	@Test(expected= IllegalArgumentException.class)
@@ -35,6 +36,7 @@ public class ContactTest {
 		Contact contact = new ContactImpl(1, "John Smith");
 		testsGetId(contact);
 		testsGetName(contact);
+		testsGetNotes(contact);
 	}
 
 	@Test(expected= IllegalArgumentException.class)
@@ -61,6 +63,12 @@ public class ContactTest {
 	private void testsGetName(Contact contact) {
 		String output = contact.getName();
 		String expected = "John Smith";
+		assertEquals(expected, output);
+	}
+
+	private void testsGetNotes(Contact contact) {
+		String output = contact.getNotes();
+		String expected = "Initial Note";
 		assertEquals(expected, output);
 	}
 

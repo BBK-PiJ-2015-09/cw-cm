@@ -38,13 +38,17 @@ public class ContactImpl implements Contact {
 	}
 
 	@Override
+	public int getId() {
+		return id;
+	}
+
+	@Override
 	public String getName() {
 		return name;
 	}
 
 	@Override
-	public int getId() {
-		return id;
+	public String getNotes() {
+		return null;
 	}
-
 }
