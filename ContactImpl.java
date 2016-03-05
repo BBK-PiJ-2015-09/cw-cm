@@ -25,7 +25,11 @@ public class ContactImpl implements Contact {
 	 * @param note an initial note on the new contact
 	 */
 	public ContactImpl(int id, String name, String note) {
-		this.id = id;
+		if (id == 0) {
+			throw new IllegalArgumentException();
+		} else {
+			this.id = id;
+		}
 	}
 
 	@Override
