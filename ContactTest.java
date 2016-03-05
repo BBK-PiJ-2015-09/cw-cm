@@ -26,6 +26,11 @@ public class ContactTest {
 		new ContactImpl(1, null, "Initial note");
 	}
 
+	@Test(expected= NullPointerException.class)
+	public void testsGeneralNullNote() {
+		new ContactImpl(1, "John Smith", null);
+	}
+
 	@Test
 	public void testsRestrictedConstructor() {
 		Contact contact = new ContactImpl(1, "John Smith");
