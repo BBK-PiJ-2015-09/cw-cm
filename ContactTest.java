@@ -11,6 +11,11 @@ public class ContactTest {
 		assertEquals(expected, output);
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsGeneralZeroId() {
+		new ContactImpl(1, "John Smith", "Initial note");
+	}
+
 	@Test
 	public void testsRestrictedConstructor() {
 		Contact contact = new ContactImpl(1, "John Smith");
@@ -20,7 +25,7 @@ public class ContactTest {
 	}
 
 	@Test(expected= IllegalArgumentException.class)
-	public void testsZeroId() {
+	public void testsRestrictedZeroId() {
 		new ContactImpl(0, "John Smith");
 	}
 
