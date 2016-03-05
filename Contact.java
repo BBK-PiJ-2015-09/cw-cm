@@ -19,7 +19,7 @@ public interface Contact {
 	 *
 	 * @return the name of the contact.
 	 */
-	// String getName();
+	String getName();
 
 	/**
 	 * Returns our notes about the contact, if any.
