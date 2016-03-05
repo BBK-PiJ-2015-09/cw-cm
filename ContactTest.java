@@ -21,4 +21,9 @@ public class ContactTest {
 		new ContactImpl(0, "John Smith");
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsNegativeId() {
+		new ContactImpl(-1, "John Smith");
+	}
+
 }
