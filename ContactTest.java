@@ -4,6 +4,14 @@ import static org.junit.Assert.*;
 public class ContactTest {
 
 	@Test
+	public void testsGeneralConstructor() {
+		Contact contact = new ContactImpl(1, "John Smith", "Initial note");
+		int output = contact.getId();
+		int expected = 1;
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsGetId() {
 		Contact contact = new ContactImpl(1, "John Smith");
 		int output = contact.getId();
