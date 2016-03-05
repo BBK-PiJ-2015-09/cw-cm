@@ -16,6 +16,11 @@ public class ContactTest {
 		new ContactImpl(0, "John Smith", "Initial note");
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsRestrictedNegativeId() {
+		new ContactImpl(-1, "John Smith", "Initial note");
+	}
+
 	@Test
 	public void testsRestrictedConstructor() {
 		Contact contact = new ContactImpl(1, "John Smith");
@@ -30,7 +35,7 @@ public class ContactTest {
 	}
 
 	@Test(expected= IllegalArgumentException.class)
-	public void testsNegativeId() {
+	public void testsGeneralNegativeId() {
 		new ContactImpl(-1, "John Smith");
 	}
 
