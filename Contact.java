@@ -29,7 +29,7 @@ public interface Contact {
 	 *
 	 * @return a string with notes about the contact, maybe empty.
 	 */
-	// String getNotes();
+	String getNotes();
 
 	/**
 	 * Add notes about the contact.
