@@ -36,5 +36,5 @@ public interface Contact {
 	 *
 	 * @param note the notes to be added
 	 */
-	// void addNotes(String note);
+	void addNotes(String note);
 }
