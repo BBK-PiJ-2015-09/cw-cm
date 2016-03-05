@@ -17,6 +17,17 @@ public class ContactImpl implements Contact {
 		}
 	}
 
+	/**
+	 * Constructor
+	 *
+	 * @param id the id of the new contact
+	 * @param name the name of the new contact
+	 * @param note an initial note on the new contact
+	 */
+	public ContactImpl(int id, String name, String note) {
+		this.id = id;
+	}
+
 	@Override
 	public int getId() {
 		return id;
