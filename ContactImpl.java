@@ -1,5 +1,6 @@
 public class ContactImpl implements Contact {
 	private int id;
+	private String name;
 
 	/**
 	 * Constructor
@@ -14,6 +15,7 @@ public class ContactImpl implements Contact {
 			throw new IllegalArgumentException();
 		} else {
 			this.id = id;
+			this.name = name;
 		}
 	}
 
@@ -31,12 +33,13 @@ public class ContactImpl implements Contact {
 			throw new IllegalArgumentException();
 		} else {
 			this.id = id;
+			this.name = name;
 		}
 	}
 
 	@Override
 	public String getName() {
-		return null;
+		return name;
 	}
 
 	@Override
