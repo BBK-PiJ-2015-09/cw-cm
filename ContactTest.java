@@ -17,7 +17,7 @@ public class ContactTest {
 	}
 
 	@Test(expected= IllegalArgumentException.class)
-	public void testsRestrictedNegativeId() {
+	public void testsGeneralNegativeId() {
 		new ContactImpl(-1, "John Smith", "Initial note");
 	}
 
@@ -35,12 +35,12 @@ public class ContactTest {
 	}
 
 	@Test(expected= IllegalArgumentException.class)
-	public void testsGeneralNegativeId() {
+	public void testsRestrictedNegativeId() {
 		new ContactImpl(-1, "John Smith");
 	}
 
 	@Test(expected= NullPointerException.class)
-	public void testsNullName() {
+	public void testsRestrictedNullName() {
 		new ContactImpl(1, null);
 	}
 
