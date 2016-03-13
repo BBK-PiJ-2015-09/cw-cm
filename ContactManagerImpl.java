@@ -74,7 +74,7 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public int addNewContact(String name, String notes) {
-		if (name == null) {
+		if (name == null || notes == null) {
 			throw new NullPointerException();
 		} else if (name == "" || notes == "") {
 			throw new IllegalArgumentException();
