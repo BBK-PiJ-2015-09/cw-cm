@@ -82,4 +82,9 @@ public class ContactManagerTest {
 	public void testsAddNewContactEmptyName() {
 		manager.addNewContact("", "Test notes");
 	}
+
+	@Test(expected= IllegalArgumentException.class)
+	public void testsAddNewContactEmptyNotes() {
+		manager.addNewContact("Emily", "");
+	}
 }
