@@ -92,7 +92,7 @@ public class ContactManagerImpl implements ContactManager {
 		} else {
 			Set<Contact> contactSet = new HashSet<Contact>();
 			for (Contact contact : contacts) {
-				if (contact.getName().contains(name)) {
+				if (contact.getName().toLowerCase().contains(name.toLowerCase())) {
 					contactSet.add(contact);
 				}
 			}
