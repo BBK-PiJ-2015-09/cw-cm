@@ -57,4 +57,11 @@ public class PastMeetingTest {
 		Calendar expected = date;
 		assertEquals(expected, output);
 	}
+
+	@Test
+	public void testsGetContacts() {
+		Set<Contact> output = meeting.getContacts();
+		Set<Contact> expected = contacts;
+		assertEquals(expected, output);
+	}
 }
