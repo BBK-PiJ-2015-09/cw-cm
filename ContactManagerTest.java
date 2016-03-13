@@ -123,4 +123,13 @@ public class ContactManagerTest {
 		int expected = 2;
 		assertEquals(expected, output);
 	}
+
+	@Test
+	public void testsGetContactsSubstringUpcase() {
+		manager.addNewContact("Emily", "Test notes");
+		manager.addNewContact("Bobby", "Test notes");
+		int output = manager.getContacts("Y").size();
+		int expected = 2;
+		assertEquals(expected, output);
+	}
 }
