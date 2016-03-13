@@ -97,4 +97,12 @@ public class ContactManagerTest {
 	public void testsAddNewContactNullNotes() {
 		manager.addNewContact("Emily", null);
 	}
+
+	@Test
+	public void testsGetContactsString() {
+		manager.addNewContact("Emily", "Test notes");
+		int output = manager.getContacts("Emily").size();
+		int expected = 1;
+		assertEquals(expected, output);
+	}
 }
