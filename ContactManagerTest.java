@@ -47,4 +47,14 @@ public class ContactManagerTest {
 		manager.addFutureMeeting(contacts, date);
 	}
 
+	// @Test(expected= IllegalArgumentException.class)
+	// public void testsAddFutureMeetingWithUnknownContact() {
+	// 	manager.addFutureMeeting(contacts, date);
+	// }
+
+	@Test(expected= NullPointerException.class)
+	public void testsAddFutureMeetingNullContacts() {
+		manager.addFutureMeeting(null, date);
+	}
+
 }
