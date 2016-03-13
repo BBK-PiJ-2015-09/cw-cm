@@ -77,4 +77,9 @@ public class ContactManagerTest {
 		int expected = 1;
 		assertEquals(expected, output);
 	}
+
+	@Test(expected= IllegalArgumentException.class)
+	public void testsAddNewContactEmptyName() {
+		manager.addNewContact("", "Test notes");
+	}
 }
