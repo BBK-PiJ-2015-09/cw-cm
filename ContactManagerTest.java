@@ -71,4 +71,10 @@ public class ContactManagerTest {
 		assertEquals(expected, output);
 	}
 
+	@Test
+	public void testsAddNewContact() {
+		int output = manager.addNewContact("Emily", "Test notes");
+		int expected = 1;
+		assertEquals(expected, output);
+	}
 }
