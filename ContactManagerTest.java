@@ -114,4 +114,13 @@ public class ContactManagerTest {
 		int expected = 2;
 		assertEquals(expected, output);
 	}
+
+	@Test
+	public void testsGetContactsSubstring() {
+		manager.addNewContact("Emily", "Test notes");
+		manager.addNewContact("Bobby", "Test notes");
+		int output = manager.getContacts("y").size();
+		int expected = 2;
+		assertEquals(expected, output);
+	}
 }
