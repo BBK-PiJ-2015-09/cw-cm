@@ -14,7 +14,7 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
-		if (contacts == null) {
+		if (contacts == null || date == null) {
 			throw new NullPointerException();
 		} else if (date.before(Calendar.getInstance())) {
 			throw new IllegalArgumentException();
