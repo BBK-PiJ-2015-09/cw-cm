@@ -27,9 +27,9 @@ public class PastMeetingTest {
 		}
 	}
 
-	@Test(expected= IllegalArgumentException.class)
-	public void testsConstructorZeroId() {
-		new PastMeetingImpl(0, date, contacts, "Meeting note");
+	@Test(expected= NullPointerException.class)
+	public void testsConstructorNullDate() {
+		new PastMeetingImpl(1, null, contacts, "Meeting note");
 	}
 
 	@Test
