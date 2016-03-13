@@ -2,6 +2,8 @@ import java.util.Calendar;
 import java.util.Set;
 
 public class PastMeetingImpl implements PastMeeting {
+	private int id;
+
 	/**
 	 * Constructor
 	 *
@@ -10,11 +12,11 @@ public class PastMeetingImpl implements PastMeeting {
 	 * @param contacts the contacts attending
 	 */
 	public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String notes) {
-
+		this.id = id;
 	}
 
 	public int getId() {
-		return 0;
+		return id;
 	}
 
 	@Override
