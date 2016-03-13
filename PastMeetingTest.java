@@ -13,7 +13,7 @@ public class PastMeetingTest {
 		Set<Contact> contacts = new HashSet<Contact>();
 		contacts.add(new ContactImpl(1, "Jon"));
 		try {
-			new PastMeetingImpl(1, date, contacts);
+			new PastMeetingImpl(1, date, contacts, "Meeting note");
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
