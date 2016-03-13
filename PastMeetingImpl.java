@@ -5,6 +5,7 @@ public class PastMeetingImpl implements PastMeeting {
 	private int id;
 	private Calendar date;
 	private Set<Contact> contacts;
+	private String notes;
 
 	/**
 	 * Constructor
@@ -20,9 +21,11 @@ public class PastMeetingImpl implements PastMeeting {
 			this.id = id;
 			this.date = date;
 			this.contacts = contacts;
+			this.notes = notes;
 		}
 	}
 
+	@Override
 	public int getId() {
 		return id;
 	}
@@ -39,7 +42,7 @@ public class PastMeetingImpl implements PastMeeting {
 
 	@Override
 	public String getNotes() {
-		return null;
+		return notes;
 	}
 
 }
