@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class ContactManagerImpl implements ContactManager {
 	private List<Meeting> meetings = new ArrayList<Meeting>();
+	private int maxId = 0;
 	/**
 	 * Constructor
 	 */
@@ -12,7 +13,7 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
-		FutureMeeting meeting = new FutureMeetingImpl(1, date, contacts);
+		FutureMeeting meeting = new FutureMeetingImpl(++maxId, date, contacts);
 		meetings.add(meeting);
 		return meeting.getId();
 	}
