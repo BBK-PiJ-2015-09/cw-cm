@@ -8,6 +8,8 @@ public class ContactImpl implements Contact {
 	 *
 	 * @param id the id of the new contact
 	 * @param name the name of the new contact
+   	 * @throws NullPointerException if name is null
+	 * @throws IllegalArgumentException if id is less than 1
 	 */
 	public ContactImpl(int id, String name) {
 		if (name == null) {
@@ -26,6 +28,8 @@ public class ContactImpl implements Contact {
 	 * @param id the id of the new contact
 	 * @param name the name of the new contact
 	 * @param note an initial note on the new contact
+  	 * @throws NullPointerException if name or note is null
+   	 * @throws IllegalArgumentException if id is zero
 	 */
 	public ContactImpl(int id, String name, String note) {
 		if (name == null || note == null) {
