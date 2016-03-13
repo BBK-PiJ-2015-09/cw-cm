@@ -32,6 +32,11 @@ public class PastMeetingTest {
 		new PastMeetingImpl(1, null, contacts, "Meeting note");
 	}
 
+	@Test(expected= NullPointerException.class)
+	public void testsConstructorNullContacts() {
+		new PastMeetingImpl(1, date, null, "Meeting note");
+	}
+
 	@Test
 	public void getId() {
 		int output = meeting.getId();
