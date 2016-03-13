@@ -92,4 +92,9 @@ public class ContactManagerTest {
 	public void testsAddNewContactNullName() {
 		manager.addNewContact(null, "Test notes");
 	}
+
+	@Test(expected= NullPointerException.class)
+	public void testsAddNewContactNullNotes() {
+		manager.addNewContact("Emily", null);
+	}
 }
