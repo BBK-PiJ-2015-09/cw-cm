@@ -16,7 +16,7 @@ public abstract class MeetingImpl implements Meeting {
 	public MeetingImpl(int id, Calendar date, Set<Contact> contacts) {
 		if (date == null || contacts == null) {
 			throw new NullPointerException();
-		} else if (id == 0 || contacts.isEmpty()) {
+		} else if (id <= 0 || contacts.isEmpty()) {
 			throw new IllegalArgumentException();
 		} else {
 			this.id = id;
