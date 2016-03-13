@@ -45,9 +45,16 @@ public class PastMeetingTest {
 	}
 
 	@Test
-	public void getId() {
+	public void testsGetId() {
 		int output = meeting.getId();
 		int expected = 1;
+		assertEquals(expected, output);
+	}
+
+	@Test
+	public void testsGetDate() {
+		Calendar output = meeting.getDate();
+		Calendar expected = date;
 		assertEquals(expected, output);
 	}
 }
