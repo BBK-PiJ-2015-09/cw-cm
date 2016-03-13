@@ -7,7 +7,7 @@ import java.util.HashSet;
 public class ContactManagerImpl implements ContactManager {
 	private List<FutureMeeting> futureMeetings = new ArrayList<FutureMeeting>();
 	private int maxId = 0;
-	private Set<Contact> contacts = new HashSet<Contact>();
+	private List<Contact> contacts = new ArrayList<Contact>();
 
 	/**
 	 * Constructor
@@ -87,7 +87,13 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public Set<Contact> getContacts(String name) {
-		return null;
+		Set<Contact> contactSet = new HashSet<Contact>();
+		for (Contact contact : contacts) {
+			if (contact.getName() == name) {
+				contactSet.add(contact);
+			}
+		}
+		return contactSet;
 	}
 
 	@Override
