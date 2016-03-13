@@ -6,12 +6,20 @@ import java.util.HashSet;
 
 
 public class PastMeetingTest {
+	Calendar date;
+	Set<Contact> contacts;
+	PastMeeting meeting;
+
+    @Before
+	public void setup() {
+		date = Calendar.getInstance();
+		contacts = new HashSet<Contact>();
+		contacts.add(new ContactImpl(1, "Jon"));
+		meeting = new PastMeetingImpl(1, date, contacts, "Meeting note");
+    }
 
 	@Test
 	public void testsConstructor() {
-		Calendar date = Calendar.getInstance();
-		Set<Contact> contacts = new HashSet<Contact>();
-		contacts.add(new ContactImpl(1, "Jon"));
 		try {
 			new PastMeetingImpl(1, date, contacts, "Meeting note");
 		} catch (Exception e) {
@@ -19,4 +27,10 @@ public class PastMeetingTest {
 		}
 	}
 
+	@Test
+	public void getId() {
+		int output = meeting.getId();
+		int expected = 1;
+		assertEquals(expected, output);
+	}
 }
