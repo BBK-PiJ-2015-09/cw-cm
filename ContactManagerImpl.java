@@ -87,7 +87,9 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public Set<Contact> getContacts(String name) {
-		if (name == "") {
+		if (name == null) {
+			throw new NullPointerException();
+		} else if (name == "") {
 			return contacts;
 		} else {
 			Set<Contact> contactSet = new HashSet<Contact>();
