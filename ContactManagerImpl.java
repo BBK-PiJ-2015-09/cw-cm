@@ -2,10 +2,12 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.HashSet;
 
 public class ContactManagerImpl implements ContactManager {
 	private List<FutureMeeting> futureMeetings = new ArrayList<FutureMeeting>();
 	private int maxId = 0;
+	private Set<Contact> contacts = new HashSet<Contact>();
 
 	/**
 	 * Constructor
@@ -72,7 +74,9 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public int addNewContact(String name, String notes) {
-		return 0;
+		Contact contact = new ContactImpl(1, name, notes);
+		contacts.add(contact);
+		return contact.getId();
 	}
 
 	@Override
