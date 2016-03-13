@@ -17,6 +17,8 @@ public class PastMeetingImpl implements PastMeeting {
 	public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String notes) {
 		if (date == null || contacts == null || notes == null) {
 			throw new NullPointerException();
+		} else if (contacts.isEmpty()) {
+			throw new IllegalArgumentException();
 		} else {
 			this.id = id;
 			this.date = date;
