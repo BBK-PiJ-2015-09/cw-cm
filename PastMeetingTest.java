@@ -64,4 +64,12 @@ public class PastMeetingTest {
 		Set<Contact> expected = contacts;
 		assertEquals(expected, output);
 	}
+
+	@Test
+	public void testsGetNotes() {
+		String output = meeting.getNotes();
+		String expected = notes;
+		assertEquals(expected, output);
+	}
+
 }
