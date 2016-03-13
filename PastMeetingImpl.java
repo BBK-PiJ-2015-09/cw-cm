@@ -1,10 +1,7 @@
 import java.util.Calendar;
 import java.util.Set;
 
-public class PastMeetingImpl implements PastMeeting {
-	private int id;
-	private Calendar date;
-	private Set<Contact> contacts;
+public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
 	private String notes;
 
 	/**
@@ -13,33 +10,15 @@ public class PastMeetingImpl implements PastMeeting {
 	 * @param id the id of the new meeting
 	 * @param date the date of the new meeting
 	 * @param contacts the contacts attending
+   	 * @param notes the notes on the meeting
 	 */
 	public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String notes) {
-		if (date == null || contacts == null || notes == null) {
+		super(id, date, contacts);
+		if (notes == null) {
 			throw new NullPointerException();
-		} else if (contacts.isEmpty()) {
-			throw new IllegalArgumentException();
 		} else {
-			this.id = id;
-			this.date = date;
-			this.contacts = contacts;
 			this.notes = notes;
 		}
-	}
-
-	@Override
-	public int getId() {
-		return id;
-	}
-
-	@Override
-	public Calendar getDate() {
-		return date;
-	}
-
-	@Override
-	public Set<Contact> getContacts() {
-		return contacts;
 	}
 
 	@Override

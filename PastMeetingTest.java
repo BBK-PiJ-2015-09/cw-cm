@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Set;
 import java.util.HashSet;
 
-
 public class PastMeetingTest {
 	Calendar date;
 	Set<Contact> contacts;
