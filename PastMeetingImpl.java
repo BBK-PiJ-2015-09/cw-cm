@@ -3,6 +3,7 @@ import java.util.Set;
 
 public class PastMeetingImpl implements PastMeeting {
 	private int id;
+	private Calendar date;
 
 	/**
 	 * Constructor
@@ -16,6 +17,7 @@ public class PastMeetingImpl implements PastMeeting {
 			throw new NullPointerException();
 		} else {
 			this.id = id;
+			this.date = date;
 		}
 	}
 
@@ -25,7 +27,7 @@ public class PastMeetingImpl implements PastMeeting {
 
 	@Override
 	public Calendar getDate() {
-		return null;
+		return date;
 	}
 
 	@Override
