@@ -44,6 +44,12 @@ public class PastMeetingTest {
 		new PastMeetingImpl(1, date, contacts, null);
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsConstructorEmptyContacts() {
+		Set<Contact> emptyContacts = new HashSet<Contact>();
+		new PastMeetingImpl(1, date, emptyContacts, notes);
+	}
+
 	@Test
 	public void testsGetId() {
 		int output = meeting.getId();
