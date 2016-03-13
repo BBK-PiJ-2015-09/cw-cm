@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 public class ContactManagerImpl implements ContactManager {
-	private List<Meeting> meetings = new ArrayList<Meeting>();
+	private List<FutureMeeting> futureMeetings = new ArrayList<FutureMeeting>();
 	private int maxId = 0;
 
 	/**
@@ -20,7 +20,7 @@ public class ContactManagerImpl implements ContactManager {
 			throw new IllegalArgumentException();
 		} else {
 			FutureMeeting meeting = new FutureMeetingImpl(++maxId, date, contacts);
-			meetings.add(meeting);
+			futureMeetings.add(meeting);
 			return meeting.getId();
 		}
 	}
@@ -32,6 +32,11 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public FutureMeeting getFutureMeeting(int id) {
+		for (FutureMeeting meeting : futureMeetings) {
+			if (meeting.getId() == id) {
+				return meeting;
+			}
+		}
 		return null;
 	}
 
