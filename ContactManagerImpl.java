@@ -74,9 +74,13 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public int addNewContact(String name, String notes) {
-		Contact contact = new ContactImpl(1, name, notes);
-		contacts.add(contact);
-		return contact.getId();
+		if (name == "") {
+			throw new IllegalArgumentException();
+		} else {
+			Contact contact = new ContactImpl(1, name, notes);
+			contacts.add(contact);
+			return contact.getId();
+		}
 	}
 
 	@Override
