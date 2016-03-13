@@ -41,4 +41,10 @@ public class ContactManagerTest {
 		assertEquals(expected, output);
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsAddFutureMeetingInPast() {
+		date.set(Calendar.YEAR, 2014);
+		manager.addFutureMeeting(contacts, date);
+	}
+
 }
