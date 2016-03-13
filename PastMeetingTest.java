@@ -27,6 +27,11 @@ public class PastMeetingTest {
 		}
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsConstructorZeroId() {
+		new PastMeetingImpl(0, date, contacts, "Meeting note");
+	}
+
 	@Test
 	public void getId() {
 		int output = meeting.getId();
