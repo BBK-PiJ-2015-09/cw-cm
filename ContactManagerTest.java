@@ -33,4 +33,12 @@ public class ContactManagerTest {
 		assertEquals(expected, output);
 	}
 
+	@Test
+	public void testsAddSecondFutureMeeting() {
+		manager.addFutureMeeting(contacts, date);
+		int output = manager.addFutureMeeting(contacts, date);
+		int expected = 2;
+		assertEquals(expected, output);
+	}
+
 }
