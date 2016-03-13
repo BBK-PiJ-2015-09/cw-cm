@@ -132,4 +132,9 @@ public class ContactManagerTest {
 		int expected = 2;
 		assertEquals(expected, output);
 	}
+
+	@Test(expected= NullPointerException.class)
+	public void testsGetContactsNullName() {
+		manager.getContacts(null);
+	}
 }

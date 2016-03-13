@@ -100,10 +100,10 @@ public class ContactManagerImpl implements ContactManager {
 		}
 	}
 
-	@Override
-	public Set<Contact> getContacts(int... ids) {
-		return null;
-	}
+	// @Override
+	// public Set<Contact> getContacts(int... ids) {
+	// 	return null;
+	// }
 
 	@Override
 	public void flush() {
