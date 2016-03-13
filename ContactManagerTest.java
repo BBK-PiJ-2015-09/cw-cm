@@ -12,6 +12,7 @@ public class ContactManagerTest {
     @Before
 	public void setup() {
 		date = Calendar.getInstance();
+		date.add(Calendar.MONTH, 1);
 		contacts = new HashSet<Contact>();
 		contacts.add(new ContactImpl(1, "Jon"));
 		manager = new ContactManagerImpl();
