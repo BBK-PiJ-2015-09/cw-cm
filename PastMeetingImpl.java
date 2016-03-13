@@ -4,6 +4,7 @@ import java.util.Set;
 public class PastMeetingImpl implements PastMeeting {
 	private int id;
 	private Calendar date;
+	private Set<Contact> contacts;
 
 	/**
 	 * Constructor
@@ -18,6 +19,7 @@ public class PastMeetingImpl implements PastMeeting {
 		} else {
 			this.id = id;
 			this.date = date;
+			this.contacts = contacts;
 		}
 	}
 
@@ -32,7 +34,7 @@ public class PastMeetingImpl implements PastMeeting {
 
 	@Override
 	public Set<Contact> getContacts() {
-		return null;
+		return contacts;
 	}
 
 	@Override
