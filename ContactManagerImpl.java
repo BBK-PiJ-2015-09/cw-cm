@@ -1,8 +1,10 @@
 import java.util.Calendar;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 
 public class ContactManagerImpl implements ContactManager {
+	private List<Meeting> meetings = new ArrayList<Meeting>();
 	/**
 	 * Constructor
 	 */
@@ -10,7 +12,9 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
-		return 0;
+		FutureMeeting meeting = new FutureMeetingImpl(1, date, contacts);
+		meetings.add(meeting);
+		return meeting.getId();
 	}
 
 	@Override
