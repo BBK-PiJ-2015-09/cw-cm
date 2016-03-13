@@ -58,4 +58,9 @@ public class ContactManagerTest {
 		manager.addFutureMeeting(null, date);
 	}
 
+	@Test(expected= NullPointerException.class)
+	public void testsAddFutureMeetingNullDate() {
+		manager.addFutureMeeting(contacts, null);
+	}
+
 }
