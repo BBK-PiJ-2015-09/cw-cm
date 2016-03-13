@@ -105,4 +105,13 @@ public class ContactManagerTest {
 		int expected = 1;
 		assertEquals(expected, output);
 	}
+
+	@Test
+	public void testsGetContactsEmptyString() {
+		manager.addNewContact("Emily", "Test notes");
+		manager.addNewContact("Bobby", "Test notes");
+		int output = manager.getContacts("").size();
+		int expected = 2;
+		assertEquals(expected, output);
+	}
 }
