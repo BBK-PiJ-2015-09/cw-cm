@@ -12,7 +12,7 @@ public class PastMeetingImpl implements PastMeeting {
 	 * @param contacts the contacts attending
 	 */
 	public PastMeetingImpl(int id, Calendar date, Set<Contact> contacts, String notes) {
-		if (date == null) {
+		if (date == null || contacts == null) {
 			throw new NullPointerException();
 		} else {
 			this.id = id;
