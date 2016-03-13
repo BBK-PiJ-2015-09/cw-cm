@@ -29,7 +29,7 @@ public class ContactManagerTest {
 	@Test
 	public void testsAddFutureMeeting() {
 		int output = manager.addFutureMeeting(contacts, date);
-		int expected = 0;
+		int expected = 1;
 		assertEquals(expected, output);
 	}
 
