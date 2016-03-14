@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class ContactManagerImpl implements ContactManager {
+	private List<PastMeeting> pastMeetings = new ArrayList<PastMeeting>();
 	private List<FutureMeeting> futureMeetings = new ArrayList<FutureMeeting>();
 	private int maxMeetingId = 0;
 	private Set<Contact> contacts = new HashSet<Contact>();
@@ -65,7 +66,8 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public void addNewPastMeeting(Set<Contact> contacts, Calendar date, String text) {
-
+		PastMeeting meeting = new PastMeetingImpl(++maxMeetingId, date, contacts, text);
+		pastMeetings.add(meeting);
 	}
 
 	@Override
