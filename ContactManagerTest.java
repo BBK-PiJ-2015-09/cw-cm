@@ -179,6 +179,16 @@ public class ContactManagerTest {
 		assertEquals(expected, output);
 	}
 
+	@Test
+	public void testsGetFutureMeetingListDuplicates() {
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		Contact contact = manager.getContacts(1).iterator().next();
+		int output = manager.getFutureMeetingList(contact).size();
+		int expected = 1;
+		assertEquals(expected, output);
+	}
+
 	@Test(expected= IllegalArgumentException.class)
 	public void testsGetFutureMeetingListWithUnknownContact() {
 		Contact unknownContact = new ContactImpl(2, "Mike", "Test notes");
