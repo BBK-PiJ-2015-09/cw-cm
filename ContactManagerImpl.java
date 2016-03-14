@@ -101,7 +101,18 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public List<Meeting> getMeetingListOn(Calendar date) {
-		return null;
+		List<Meeting> meetings = new ArrayList<Meeting>();
+		for (Meeting meeting : pastMeetings) {
+			if (meeting.getDate().equals(date)) {
+				meetings.add(meeting);
+			}
+		}
+		for (Meeting meeting : futureMeetings) {
+			if (meeting.getDate().equals(date)) {
+				meetings.add(meeting);
+			}
+		}
+		return meetings;
 	}
 
 	@Override
