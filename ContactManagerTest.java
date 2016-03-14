@@ -259,6 +259,26 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsGetPastMeetingListEmpty() {
+		// Add meetings for existing contact
+		Calendar date1 = Calendar.getInstance();
+		date1.add(Calendar.MONTH, -1);
+		manager.addNewPastMeeting(manager.getContacts(1), date1, "Test notes");
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.MONTH, -2);
+		manager.addNewPastMeeting(manager.getContacts(1), date2, "Test notes");
+
+		// Add a new contact without any meetings
+		manager.addNewContact("Jon", "New contact");
+		Contact contact = manager.getContacts(2).iterator().next();
+
+		// Make sure the method doesn't return any meetings for him
+		int output = manager.getPastMeetingListFor(contact).size();
+		int expected = 0;
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
 		try {
