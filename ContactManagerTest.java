@@ -332,7 +332,7 @@ public class ContactManagerTest {
 	}
 
 	@Test
-	public void testAddMeetingNotes() {
+	public void testsAddMeetingNotes() {
 		// create a manager with a current time in the future
 		manager = new ContactManagerImpl(new CurrentTimeFutureMock());
 		manager.addNewContact("Jon", "Test notes");
@@ -346,7 +346,7 @@ public class ContactManagerTest {
 	}
 
 	@Test
-	public void testAddMeetingNotesToPastMeeting() {
+	public void testsAddMeetingNotesToPastMeeting() {
 		date.add(Calendar.YEAR, -1);
 		manager.addNewPastMeeting(manager.getContacts(1), date, "");
 		manager.addMeetingNotes(1, "This meeting occurred.");
@@ -356,13 +356,18 @@ public class ContactManagerTest {
 	}
 
 	@Test
-	public void testAddMeetingNotesRemovesCopiedMeeting() {
+	public void testsAddMeetingNotesRemovesCopiedMeeting() {
 		date.add(Calendar.YEAR, -1);
 		manager.addNewPastMeeting(manager.getContacts(1), date, "");
 		manager.addMeetingNotes(1, "This meeting occurred.");
 		PastMeeting output = manager.getPastMeeting(1);
 		PastMeeting expected = null;
 		assertEquals(expected, output);
+	}
+
+	@Test(expected= IllegalArgumentException.class)
+	public void testsAddMeetingNotesNonExistentMeeting() {
+		manager.addMeetingNotes(2, "This meeting occurred.");
 	}
 
 	@Test
