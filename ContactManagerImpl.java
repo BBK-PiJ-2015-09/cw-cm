@@ -106,15 +106,19 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public Set<Contact> getContacts(int... ids) {
-		Set<Contact> contactSet = new HashSet<Contact>();
-		for (int id : ids) {
-			for (Contact contact : contacts) {
-				if (contact.getId() == id) {
-					contactSet.add(contact);
+		if (ids.length == 0) {
+			throw new IllegalArgumentException();
+		} else {
+			Set<Contact> contactSet = new HashSet<Contact>();
+			for (int id : ids) {
+				for (Contact contact : contacts) {
+					if (contact.getId() == id) {
+						contactSet.add(contact);
+					}
 				}
 			}
+			return contactSet;
 		}
-		return contactSet;
 	}
 
 	@Override
