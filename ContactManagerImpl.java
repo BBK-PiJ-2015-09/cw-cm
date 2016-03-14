@@ -156,6 +156,7 @@ public class ContactManagerImpl implements ContactManager {
 		}
 		int newId = maxMeetingId;
 		addNewPastMeeting(meeting.getContacts(), meeting.getDate(), text);
+		removeMeeting(id);
 		return getPastMeeting(newId);
 	}
 
@@ -223,5 +224,18 @@ public class ContactManagerImpl implements ContactManager {
 			}
 		}
 		return null;
+	}
+
+	private void removeMeeting(int id) {
+		for(int i = 0; i < futureMeetings.size(); i++) {
+			if (futureMeetings.get(i).getId() == id) {
+				futureMeetings.remove(i);
+			}
+		}
+		for(int i = 0; i < pastMeetings.size(); i++) {
+			if (pastMeetings.get(i).getId() == id) {
+				pastMeetings.remove(i);
+			}
+		}
 	}
 }
