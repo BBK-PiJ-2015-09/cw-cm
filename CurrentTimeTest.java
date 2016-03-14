@@ -1,6 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CurrentTimeTest {
 
@@ -16,9 +17,9 @@ public class CurrentTimeTest {
 	@Test
 	public void testsNow() {
 		CurrentTime currentTime = new CurrentTimeImpl();
-		Calendar output = currentTime.now();
-		Calendar expected = Calendar.getInstance();
-		assertEquals(expected, output);
+		Date output = currentTime.now().getTime();
+		Date expected = Calendar.getInstance().getTime();
+		assertTrue((expected.getTime() - output.getTime()) < 1000);
 	}
 
 }
