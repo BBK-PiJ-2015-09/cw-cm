@@ -220,7 +220,7 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public void flush() {
-
+		CSV.save(pastMeetings, futureMeetings, contacts);
 	}
 
 	private FutureMeeting findFutureMeeting(int id) {
