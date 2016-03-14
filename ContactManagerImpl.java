@@ -6,8 +6,9 @@ import java.util.HashSet;
 
 public class ContactManagerImpl implements ContactManager {
 	private List<FutureMeeting> futureMeetings = new ArrayList<FutureMeeting>();
-	private int maxId = 0;
+	private int maxMeetingId = 0;
 	private Set<Contact> contacts = new HashSet<Contact>();
+	private int maxContactId = 0;
 
 	/**
 	 * Constructor
@@ -21,7 +22,7 @@ public class ContactManagerImpl implements ContactManager {
 		} else if (date.before(Calendar.getInstance())) {
 			throw new IllegalArgumentException();
 		} else {
-			FutureMeeting meeting = new FutureMeetingImpl(++maxId, date, contacts);
+			FutureMeeting meeting = new FutureMeetingImpl(++maxMeetingId, date, contacts);
 			futureMeetings.add(meeting);
 			return meeting.getId();
 		}
@@ -79,7 +80,7 @@ public class ContactManagerImpl implements ContactManager {
 		} else if (name == "" || notes == "") {
 			throw new IllegalArgumentException();
 		} else {
-			Contact contact = new ContactImpl(1, name, notes);
+			Contact contact = new ContactImpl(++maxContactId, name, notes);
 			contacts.add(contact);
 			return contact.getId();
 		}
