@@ -205,6 +205,33 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsGetMeetingListOnChronological() {
+		// Add the meetings, out of chronological order
+		Calendar date1 = Calendar.getInstance();
+		date1.add(Calendar.HOUR, 1);
+		date1.set(Calendar.HOUR_OF_DAY, 9);
+		manager.addFutureMeeting(manager.getContacts(1), date1);
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.HOUR, 1);
+		date2.set(Calendar.HOUR_OF_DAY, 6);
+		manager.addFutureMeeting(manager.getContacts(1), date2);
+		Calendar date3 = Calendar.getInstance();
+		date3.add(Calendar.HOUR, 1);
+		date3.set(Calendar.HOUR_OF_DAY, 3);
+		manager.addFutureMeeting(manager.getContacts(1), date3);
+
+		// Get the meetings
+		List<Meeting> meetings = manager.getMeetingListOn(date1);
+		Date first = meetings.get(0).getDate().getTime();
+		Date second = meetings.get(1).getDate().getTime();
+		Date third = meetings.get(2).getDate().getTime();
+
+		// Assert that they are return in chronological order
+		assertTrue((first.before(second)));
+		assertTrue((second.before(third)));
+	}
+
+	@Test
 	public void testsGetMeetingListOnEmptyDate() {
 		manager.addFutureMeeting(manager.getContacts(1), date);
 		Calendar date2 = Calendar.getInstance();
