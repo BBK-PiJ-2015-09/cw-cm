@@ -522,5 +522,11 @@ public class ContactManagerTest {
 
 		File pastMeetings = new File("pastMeetings.csv");
 		assertTrue(pastMeetings.exists());
+
+		File futureMeetings = new File("futureMeetings.csv");
+		assertTrue(futureMeetings.exists());
+
+		File contacts = new File("contacts.csv");
+		assertTrue(contacts.exists());
 	}
 }
