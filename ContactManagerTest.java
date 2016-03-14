@@ -539,7 +539,7 @@ public class ContactManagerTest {
 		File futureMeetings = new File("futureMeetings.csv");
 		assertTrue(futureMeetings.exists());
 
-		// File contacts = new File("contacts.csv");
-		// assertTrue(contacts.exists());
+		File contacts = new File("contacts.csv");
+		assertTrue(contacts.exists());
 	}
 }
