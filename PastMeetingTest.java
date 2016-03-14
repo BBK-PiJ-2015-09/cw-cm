@@ -87,4 +87,11 @@ public class PastMeetingTest {
 		assertEquals(expected, output);
 	}
 
+	@Test
+	public void testsOverwriteNotes() {
+		meeting.overwriteNotes("New note");
+		String output = meeting.getNotes();
+		String expected = "New note";
+		assertEquals(expected, output);
+	}
 }
