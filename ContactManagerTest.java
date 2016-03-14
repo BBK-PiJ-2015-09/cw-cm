@@ -178,7 +178,9 @@ public class ContactManagerTest {
 		Calendar date2 = Calendar.getInstance();
 		date2.add(Calendar.MONTH, 1);
 		manager.addFutureMeeting(manager.getContacts(1), date2);
-		int output = manager.getMeetingListOn(date2).size();
+		Calendar date3 = Calendar.getInstance();
+		date3.add(Calendar.MONTH, 1);
+		int output = manager.getMeetingListOn(date3).size();
 		int expected = 1;
 		assertEquals(expected, output);
 	}
