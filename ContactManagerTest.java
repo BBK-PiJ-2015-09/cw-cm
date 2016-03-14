@@ -278,6 +278,12 @@ public class ContactManagerTest {
 		assertEquals(expected, output);
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsGetPastMeetingListForWithUnknownContact() {
+		Contact unknownContact = new ContactImpl(2, "Mike", "Test notes");
+		manager.getPastMeetingListFor(unknownContact);
+	}
+
 	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
