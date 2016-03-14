@@ -27,4 +27,14 @@ public class PastMeetingImpl extends MeetingImpl implements PastMeeting {
 		return notes;
 	}
 
+	/**
+	 * Overwrite notes. Decided to include this instead of append because
+	 * the specification is ambiguous and overwrite allows for deletion as
+	 * well as manually appending.
+	 *
+	 * @param notes the new notes
+	 */
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
 }
