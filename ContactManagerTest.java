@@ -346,6 +346,15 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testAddMeetingNotesToPastMeeting() {
+		manager.addNewPastMeeting(manager.getContacts(1), date, "");
+		manager.addMeetingNotes(1, "This meeting occurred.");
+		String output = manager.getPastMeeting(1).getNotes();
+		String expected = "This meeting occurred.";
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsAddNewContact() {
 		int output = manager.addNewContact("Emily", "Test notes");
 		int expected = 2;
