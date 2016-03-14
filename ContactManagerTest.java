@@ -356,6 +356,16 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testAddMeetingNotesRemovesCopiedMeeting() {
+		date.add(Calendar.YEAR, -1);
+		manager.addNewPastMeeting(manager.getContacts(1), date, "");
+		manager.addMeetingNotes(1, "This meeting occurred.");
+		PastMeeting output = manager.getPastMeeting(1);
+		PastMeeting expected = null;
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsAddNewContact() {
 		int output = manager.addNewContact("Emily", "Test notes");
 		int expected = 2;
