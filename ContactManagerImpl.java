@@ -79,7 +79,9 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public List<Meeting> getFutureMeetingList(Contact contact) {
-		if (!this.contacts.contains(contact)) {
+		if (contact == null) {
+			throw new NullPointerException();
+		} else if (!this.contacts.contains(contact)) {
 			throw new IllegalArgumentException();
 		} else {
 			List<Meeting> meetings = new ArrayList<Meeting>();
