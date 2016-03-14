@@ -89,6 +89,14 @@ public class ContactManagerTest {
 		manager.addNewPastMeeting(emptyContacts, date, "Test notes");
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsAddNewPastMeetingWithUnknownContact() {
+		date.set(Calendar.YEAR, 2014);
+		Set<Contact> unknownContacts = new HashSet<Contact>();
+		unknownContacts.add(new ContactImpl(2, "Mike", "Test notes"));
+		manager.addNewPastMeeting(unknownContacts, date, "Test notes");
+	}
+
 	@Test
 	public void testsAddNewContact() {
 		int output = manager.addNewContact("Emily", "Test notes");
