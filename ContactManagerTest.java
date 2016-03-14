@@ -13,14 +13,14 @@ public class ContactManagerTest {
 	public void setup() {
 		date = Calendar.getInstance();
 		date.add(Calendar.MONTH, 1);
-		manager = new ContactManagerImpl();
+		manager = new ContactManagerImpl(new CurrentTimeImpl());
 		manager.addNewContact("Jon", "Test notes");
     }
 
 	@Test
 	public void testsConstructor() {
 		try {
-			new ContactManagerImpl();
+			new ContactManagerImpl(new CurrentTimeImpl());
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
