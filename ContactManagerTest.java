@@ -105,6 +105,23 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsGetMeetingFuture() {
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		int output = manager.getMeeting(1).getId();
+		int expected = 1;
+		assertEquals(expected, output);
+	}
+
+	@Test
+	public void testsGetMeetingPast() {
+		date.add(Calendar.YEAR, -1);
+		manager.addNewPastMeeting(manager.getContacts(1), date, "Test notes");
+		int output = manager.getMeeting(1).getId();
+		int expected = 1;
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
 		try {
