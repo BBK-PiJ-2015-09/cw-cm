@@ -118,7 +118,13 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public List<PastMeeting> getPastMeetingListFor(Contact contact) {
-		return null;
+		List<PastMeeting> meetings = new ArrayList<PastMeeting>();
+		for (PastMeeting meeting : pastMeetings) {
+			if (meeting.getContacts().contains(contact)) {
+				meetings.add(meeting);
+			}
+		}
+		return meetings;
 	}
 
 	@Override
