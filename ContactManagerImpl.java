@@ -10,11 +10,14 @@ public class ContactManagerImpl implements ContactManager {
 	private int maxMeetingId = 0;
 	private Set<Contact> contacts = new HashSet<Contact>();
 	private int maxContactId = 0;
+	private CurrentTime calendar;
 
 	/**
 	 * Constructor
 	 */
-	public ContactManagerImpl() {}
+	public ContactManagerImpl(CurrentTime calendar) {
+		this.calendar = calendar;
+	}
 
 	@Override
 	public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
