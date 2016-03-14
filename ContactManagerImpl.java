@@ -117,7 +117,11 @@ public class ContactManagerImpl implements ContactManager {
 					}
 				}
 			}
-			return contactSet;
+			if (contactSet.isEmpty()) {
+				throw new IllegalArgumentException();
+			} else {
+				return contactSet;
+			}
 		}
 	}
 
