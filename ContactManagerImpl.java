@@ -50,16 +50,12 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public FutureMeeting getFutureMeeting(int id) {
-		for (FutureMeeting meeting : futureMeetings) {
-			if (meeting.getId() == id) {
-				if (meeting.getDate().before(calendar.now())) {
-					throw new IllegalArgumentException();
-				} else {
-					return meeting;
-				}
-			}
+		FutureMeeting meeting = findFutureMeeting(id);
+		if (meeting.getDate().before(calendar.now())) {
+			throw new IllegalArgumentException();
+		} else {
+			return meeting;
 		}
-		return null;
 	}
 
 	@Override
