@@ -381,6 +381,11 @@ public class ContactManagerTest {
 		manager.addMeetingNotes(1, "This meeting occurred.");
 	}
 
+	@Test(expected= NullPointerException.class)
+	public void testsAddMeetingNotesNullNotes() {
+		manager.addMeetingNotes(1, null);
+	}
+
 	@Test
 	public void testsAddNewContact() {
 		int output = manager.addNewContact("Emily", "Test notes");
