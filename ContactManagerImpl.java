@@ -12,14 +12,11 @@ public class ContactManagerImpl implements ContactManager {
 	private int maxMeetingId = 0;
 	private Set<Contact> contacts = new HashSet<Contact>();
 	private int maxContactId = 0;
-	private CurrentTime calendar;
 
 	/**
 	 * Constructor
 	 */
-	public ContactManagerImpl(CurrentTime calendar) {
-		this.calendar = calendar;
-	}
+	public ContactManagerImpl() {}
 
 	@Override
 	public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
@@ -38,7 +35,7 @@ public class ContactManagerImpl implements ContactManager {
 	public PastMeeting getPastMeeting(int id) {
 		for (PastMeeting meeting : pastMeetings) {
 			if (meeting.getId() == id) {
-				if (meeting.getDate().after(calendar.now())) {
+				if (meeting.getDate().after(Calendar.getInstance())) {
 					throw new IllegalStateException();
 				} else {
 					return meeting;
@@ -51,7 +48,7 @@ public class ContactManagerImpl implements ContactManager {
 	@Override
 	public FutureMeeting getFutureMeeting(int id) {
 		FutureMeeting meeting = findFutureMeeting(id);
-		if (meeting.getDate().before(calendar.now())) {
+		if (meeting.getDate().before(Calendar.getInstance())) {
 			throw new IllegalArgumentException();
 		} else {
 			return meeting;

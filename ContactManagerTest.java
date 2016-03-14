@@ -16,7 +16,7 @@ public class ContactManagerTest {
 	public void setup() {
 		date = Calendar.getInstance();
 		date.add(Calendar.MONTH, 2);
-		manager = new ContactManagerImpl(new CurrentTimeImpl());
+		manager = new ContactManagerImpl();
 		manager.addNewContact("Jon", "Test notes");
     }
 
@@ -33,7 +33,7 @@ public class ContactManagerTest {
 	@Test
 	public void testsConstructor() {
 		try {
-			new ContactManagerImpl(new CurrentTimeImpl());
+			new ContactManagerImpl();
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
@@ -90,7 +90,7 @@ public class ContactManagerTest {
 	@Test(expected= IllegalStateException.class)
 	public void testsGetPastMeetingWithFutureDate() {
 		// create a manager with a current time in the past
-		manager = new ContactManagerImpl(new CurrentTimePastMock());
+		manager = new ContactManagerImpl();
 		manager.addNewContact("Jon", "Test notes");
 		// addPastMeeting uses the actual non-injected present for its check
 		manager.addNewPastMeeting(manager.getContacts(1), date, "Test notes");
@@ -104,17 +104,6 @@ public class ContactManagerTest {
 		int output = manager.getFutureMeeting(1).getId();
 		int expected = 1;
 		assertEquals(expected, output);
-	}
-
-	@Test(expected= IllegalArgumentException.class)
-	public void testsGetFutureMeetingWithPastDate() {
-		// create a manager with a current time in the future
-		manager = new ContactManagerImpl(new CurrentTimeFutureMock());
-		manager.addNewContact("Jon", "Test notes");
-		// addFutureMeeting uses the actual non-injected present for its check
-		manager.addFutureMeeting(manager.getContacts(1), date);
-		// getFutureMeeting thinks it's the future, therefore the meeting is in the past, therefore throws the exception
-		manager.getFutureMeeting(1);
 	}
 
 	@Test
@@ -342,20 +331,6 @@ public class ContactManagerTest {
 	}
 
 	@Test
-	public void testsAddMeetingNotes() {
-		// create a manager with a current time in the future
-		manager = new ContactManagerImpl(new CurrentTimeFutureMock());
-		manager.addNewContact("Jon", "Test notes");
-		// addFutureMeeting uses the actual non-injected present for its check
-		manager.addFutureMeeting(manager.getContacts(1), date);
-		// addMeetingNotes thinks it's the future, therefore the meeting is in the past, therefore can transform it into PastMeeting
-		manager.addMeetingNotes(1, "This meeting occurred.");
-		int output = manager.getPastMeeting(2).getId();
-		int expected = 2;
-		assertEquals(expected, output);
-	}
-
-	@Test
 	public void testsAddMeetingNotesToPastMeeting() {
 		date.add(Calendar.YEAR, -1);
 		manager.addNewPastMeeting(manager.getContacts(1), date, "");
@@ -383,7 +358,7 @@ public class ContactManagerTest {
 	@Test(expected= IllegalStateException.class)
 	public void testsAddMeetingNotesPastMeetingFutureDate() {
 		// create a manager with a current time in the past
-		manager = new ContactManagerImpl(new CurrentTimePastMock());
+		manager = new ContactManagerImpl();
 		manager.addNewContact("Jon", "Test notes");
 		// addPastMeeting uses the actual non-injected present for its check
 		manager.addNewPastMeeting(manager.getContacts(1), date, "Test notes");
