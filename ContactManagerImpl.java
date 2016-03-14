@@ -118,7 +118,9 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public List<PastMeeting> getPastMeetingListFor(Contact contact) {
-		if (!this.contacts.contains(contact)) {
+		if (contact == null) {
+			throw new NullPointerException();
+		} else if (!this.contacts.contains(contact)) {
 			throw new IllegalArgumentException();
 		} else {
 			List<PastMeeting> meetings = new ArrayList<PastMeeting>();
