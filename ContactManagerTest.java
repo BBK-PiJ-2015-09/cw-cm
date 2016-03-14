@@ -204,6 +204,19 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsGetMeetingListOnEmptyDate() {
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.MONTH, 1);
+		manager.addFutureMeeting(manager.getContacts(1), date2);
+		Calendar date3 = Calendar.getInstance();
+		date3.add(Calendar.MONTH, 6);
+		int output = manager.getMeetingListOn(date3).size();
+		int expected = 0;
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
 		try {
