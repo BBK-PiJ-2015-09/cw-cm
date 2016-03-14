@@ -101,14 +101,15 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public List<Meeting> getMeetingListOn(Calendar date) {
+		int day = date.get(Calendar.DAY_OF_YEAR);
 		List<Meeting> meetings = new ArrayList<Meeting>();
 		for (Meeting meeting : pastMeetings) {
-			if (meeting.getDate().equals(date)) {
+			if (meeting.getDate().get(Calendar.DAY_OF_YEAR) == day) {
 				meetings.add(meeting);
 			}
 		}
 		for (Meeting meeting : futureMeetings) {
-			if (meeting.getDate().equals(date)) {
+			if (meeting.getDate().get(Calendar.DAY_OF_YEAR) == day) {
 				meetings.add(meeting);
 			}
 		}
