@@ -168,4 +168,12 @@ public class ContactManagerTest {
 		manager.getContacts();
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsGetContactsUnfoundIds() {
+		manager.addNewContact("Emily", "Test notes");
+		manager.addNewContact("Bobby", "Test notes");
+		manager.addNewContact("Amelia", "Test notes");
+		manager.getContacts(93, 94);
+	}
+
 }
