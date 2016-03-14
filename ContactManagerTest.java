@@ -158,8 +158,14 @@ public class ContactManagerTest {
 		manager.addNewContact("Emily", "Test notes");
 		manager.addNewContact("Bobby", "Test notes");
 		manager.addNewContact("Amelia", "Test notes");
-		int output = manager.getContacts(2, 3, 93).size();
+		int output = manager.getContacts(2, 3).size();
 		int expected = 2;
 		assertEquals(expected, output);
 	}
+
+	@Test(expected= IllegalArgumentException.class)
+	public void testsGetContactsNoIds() {
+		manager.getContacts();
+	}
+
 }
