@@ -152,7 +152,10 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public PastMeeting addMeetingNotes(int id, String text) {
-		return null;
+		FutureMeeting meeting = findFutureMeeting(id);
+		int newId = maxMeetingId;
+		addNewPastMeeting(meeting.getContacts(), meeting.getDate(), text);
+		return getPastMeeting(newId);
 	}
 
 	@Override
@@ -210,5 +213,14 @@ public class ContactManagerImpl implements ContactManager {
 	@Override
 	public void flush() {
 
+	}
+
+	private FutureMeeting findFutureMeeting(int id) {
+		for (FutureMeeting meeting : futureMeetings) {
+			if (meeting.getId() == id) {
+				return meeting;
+			}
+		}
+		return null;
 	}
 }
