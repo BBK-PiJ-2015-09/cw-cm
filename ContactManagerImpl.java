@@ -148,7 +148,12 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public PastMeeting addMeetingNotes(int id, String text) {
-		FutureMeeting meeting = findFutureMeeting(id);
+		Meeting meeting;
+		if (getPastMeeting(id) != null) {
+			meeting = getPastMeeting(id);
+		} else {
+			meeting = findFutureMeeting(id);
+		}
 		int newId = maxMeetingId;
 		addNewPastMeeting(meeting.getContacts(), meeting.getDate(), text);
 		return getPastMeeting(newId);

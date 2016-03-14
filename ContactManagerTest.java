@@ -350,7 +350,7 @@ public class ContactManagerTest {
 		date.add(Calendar.YEAR, -1);
 		manager.addNewPastMeeting(manager.getContacts(1), date, "");
 		manager.addMeetingNotes(1, "This meeting occurred.");
-		String output = manager.getPastMeeting(1).getNotes();
+		String output = manager.getPastMeeting(2).getNotes();
 		String expected = "This meeting occurred.";
 		assertEquals(expected, output);
 	}
