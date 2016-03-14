@@ -232,6 +232,33 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsGetPastMeetingListForChronological() {
+		// Add the meetings, out of chronological order
+		Calendar date1 = Calendar.getInstance();
+		date1.add(Calendar.MONTH, -1);
+		manager.addNewPastMeeting(manager.getContacts(1), date1, "Test notes");
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.MONTH, -2);
+		manager.addNewPastMeeting(manager.getContacts(1), date2, "Test notes");
+		Calendar date3 = Calendar.getInstance();
+		date3.add(Calendar.MONTH, -3);
+		manager.addNewPastMeeting(manager.getContacts(1), date3, "Test notes");
+
+		// Get the contact
+		Contact contact = manager.getContacts(1).iterator().next();
+
+		// Get the meetings
+		List<PastMeeting> meetings = manager.getPastMeetingListFor(contact);
+		Date first = meetings.get(0).getDate().getTime();
+		Date second = meetings.get(1).getDate().getTime();
+		Date third = meetings.get(2).getDate().getTime();
+
+		// Assert that they are return in chronological order
+		assertTrue((first.before(second)));
+		assertTrue((second.before(third)));
+	}
+
+	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
 		try {
