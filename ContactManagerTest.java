@@ -13,8 +13,6 @@ public class ContactManagerTest {
 	public void setup() {
 		date = Calendar.getInstance();
 		date.add(Calendar.MONTH, 1);
-		contacts = new HashSet<Contact>();
-		contacts.add(new ContactImpl(1, "Jon", "Test notes"));
 		manager = new ContactManagerImpl();
 		manager.addNewContact("Jon", "Test notes");
     }
@@ -30,15 +28,15 @@ public class ContactManagerTest {
 
 	@Test
 	public void testsAddFutureMeeting() {
-		int output = manager.addFutureMeeting(contacts, date);
+		int output = manager.addFutureMeeting(manager.getContacts(1), date);
 		int expected = 1;
 		assertEquals(expected, output);
 	}
 
 	@Test
 	public void testsAddSecondFutureMeeting() {
-		manager.addFutureMeeting(contacts, date);
-		int output = manager.addFutureMeeting(contacts, date);
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		int output = manager.addFutureMeeting(manager.getContacts(1), date);
 		int expected = 2;
 		assertEquals(expected, output);
 	}
@@ -46,14 +44,14 @@ public class ContactManagerTest {
 	@Test(expected= IllegalArgumentException.class)
 	public void testsAddFutureMeetingInPast() {
 		date.set(Calendar.YEAR, 2014);
-		manager.addFutureMeeting(contacts, date);
+		manager.addFutureMeeting(manager.getContacts(1), date);
 	}
 
 	@Test(expected= IllegalArgumentException.class)
 	public void testsAddFutureMeetingWithUnknownContact() {
 		Set<Contact> unknownContacts = new HashSet<Contact>();
 		unknownContacts.add(new ContactImpl(2, "Mike", "Test notes"));
-		manager.addFutureMeeting(contacts, date);
+		manager.addFutureMeeting(unknownContacts, date);
 	}
 
 	@Test(expected= NullPointerException.class)
@@ -68,7 +66,7 @@ public class ContactManagerTest {
 
 	@Test
 	public void testsGetFutureMeeting() {
-		manager.addFutureMeeting(contacts, date);
+		manager.addFutureMeeting(manager.getContacts(1), date);
 		int output = manager.getFutureMeeting(1).getId();
 		int expected = 1;
 		assertEquals(expected, output);

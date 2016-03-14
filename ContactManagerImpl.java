@@ -19,7 +19,7 @@ public class ContactManagerImpl implements ContactManager {
 	public int addFutureMeeting(Set<Contact> contacts, Calendar date) {
 		if (contacts == null || date == null) {
 			throw new NullPointerException();
-		} else if (date.before(Calendar.getInstance())) {
+		} else if (date.before(Calendar.getInstance()) || !this.contacts.containsAll(contacts)) {
 			throw new IllegalArgumentException();
 		} else {
 			FutureMeeting meeting = new FutureMeetingImpl(++maxMeetingId, date, contacts);
