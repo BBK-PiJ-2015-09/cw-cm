@@ -97,6 +97,12 @@ public class ContactManagerTest {
 		manager.addNewPastMeeting(unknownContacts, date, "Test notes");
 	}
 
+	@Test(expected= NullPointerException.class)
+	public void testsAddNewPastMeetingNullContacts() {
+		date.set(Calendar.YEAR, 2014);
+		manager.addNewPastMeeting(null, date, "Test notes");
+	}
+
 	@Test
 	public void testsAddNewContact() {
 		int output = manager.addNewContact("Emily", "Test notes");
