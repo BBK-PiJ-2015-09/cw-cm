@@ -284,6 +284,11 @@ public class ContactManagerTest {
 		manager.getPastMeetingListFor(unknownContact);
 	}
 
+	@Test(expected= NullPointerException.class)
+	public void testsPastMeetingListForWithNullContact() {
+		manager.getPastMeetingListFor(null);
+	}
+
 	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
