@@ -73,6 +73,16 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsAddNewPastMeeting() {
+		date.set(Calendar.YEAR, 2014);
+		try {
+			manager.addNewPastMeeting(manager.getContacts(1), date, "Test notes");
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+
+	@Test
 	public void testsAddNewContact() {
 		int output = manager.addNewContact("Emily", "Test notes");
 		int expected = 2;
