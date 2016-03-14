@@ -66,6 +66,8 @@ public class ContactManagerTest {
 
 	@Test
 	public void testsGetPastMeeting() {
+		date = Calendar.getInstance();
+		date.add(Calendar.MONTH, -1);
 		manager.addNewPastMeeting(manager.getContacts(1), date, "Test notes");
 		int output = manager.getPastMeeting(1).getId();
 		int expected = 1;
@@ -76,6 +78,7 @@ public class ContactManagerTest {
 	public void testsGetPastMeetingWithFutureDate() {
 		// create a manager with a current time in the past
 		manager = new ContactManagerImpl(new CurrentTimePastMock());
+		manager.addNewContact("Jon", "Test notes");
 		// addPastMeeting uses the actual non-injected present for its check
 		manager.addNewPastMeeting(manager.getContacts(1), date, "Test notes");
 		// getPastMeeting thinks it's the past, therefore the meeting is in the future, therefore throws the exception
@@ -94,6 +97,7 @@ public class ContactManagerTest {
 	public void testsGetFutureMeetingWithPastDate() {
 		// create a manager with a current time in the future
 		manager = new ContactManagerImpl(new CurrentTimeFutureMock());
+		manager.addNewContact("Jon", "Test notes");
 		// addFutureMeeting uses the actual non-injected present for its check
 		manager.addFutureMeeting(manager.getContacts(1), date);
 		// getFutureMeeting thinks it's the future, therefore the meeting is in the past, therefore throws the exception
