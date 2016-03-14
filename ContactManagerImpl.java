@@ -3,6 +3,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ContactManagerImpl implements ContactManager {
 	private List<PastMeeting> pastMeetings = new ArrayList<PastMeeting>();
@@ -83,6 +85,11 @@ public class ContactManagerImpl implements ContactManager {
 				meetings.add(meeting);
 			}
 		}
+		Collections.sort(meetings, new Comparator<Meeting>() {
+		  public int compare(Meeting last, Meeting next) {
+		      return last.getDate().compareTo(next.getDate());
+		  }
+		});
 		return meetings;
 	}
 
