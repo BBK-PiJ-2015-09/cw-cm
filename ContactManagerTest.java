@@ -65,6 +65,14 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsGetPastMeeting() {
+		manager.addNewPastMeeting(manager.getContacts(1), date, "Test notes");
+		int output = manager.getPastMeeting(1).getId();
+		int expected = 1;
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsGetFutureMeeting() {
 		manager.addFutureMeeting(manager.getContacts(1), date);
 		int output = manager.getFutureMeeting(1).getId();
