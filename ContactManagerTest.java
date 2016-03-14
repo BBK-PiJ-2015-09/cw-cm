@@ -195,9 +195,11 @@ public class ContactManagerTest {
 		manager.addFutureMeeting(manager.getContacts(1), date);
 		Calendar date2 = Calendar.getInstance();
 		date2.add(Calendar.MONTH, 1);
+		date2.set(Calendar.HOUR_OF_DAY, 6);
 		manager.addFutureMeeting(manager.getContacts(1), date2);
 		Calendar date3 = Calendar.getInstance();
 		date3.add(Calendar.MONTH, 1);
+		date3.set(Calendar.HOUR_OF_DAY, 9);
 		int output = manager.getMeetingListOn(date3).size();
 		int expected = 1;
 		assertEquals(expected, output);
