@@ -155,7 +155,7 @@ public interface ContactManager {
 	 * @throws IllegalArgumentException if no IDs are provided or if
 	 * any of the provided IDs does not correspond to a real contact
 	 */
-	// Set<Contact> getContacts(int... ids);
+	Set<Contact> getContacts(int... ids);
 
 	/**
 	 * Save all data to disk.

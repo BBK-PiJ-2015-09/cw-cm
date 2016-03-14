@@ -119,6 +119,7 @@ public class ContactManagerTest {
 	public void testsGetContactsSubstring() {
 		manager.addNewContact("Emily", "Test notes");
 		manager.addNewContact("Bobby", "Test notes");
+		manager.addNewContact("Amelia", "Test notes");
 		int output = manager.getContacts("y").size();
 		int expected = 2;
 		assertEquals(expected, output);
@@ -133,8 +134,13 @@ public class ContactManagerTest {
 		assertEquals(expected, output);
 	}
 
-	@Test(expected= NullPointerException.class)
-	public void testsGetContactsNullName() {
-		manager.getContacts(null);
+	@Test
+	public void testsGetContactsId() {
+		manager.addNewContact("Emily", "Test notes");
+		manager.addNewContact("Bobby", "Test notes");
+		manager.addNewContact("Amelia", "Test notes");
+		int output = manager.getContacts(2).size();
+		int expected = 1;
+		assertEquals(expected, output);
 	}
 }
