@@ -151,8 +151,10 @@ public class ContactManagerImpl implements ContactManager {
 		Meeting meeting;
 		if (getPastMeeting(id) != null) {
 			meeting = getPastMeeting(id);
-		} else {
+		} else if (findFutureMeeting(id) != null) {
 			meeting = findFutureMeeting(id);
+		} else {
+			throw new IllegalArgumentException();
 		}
 		int newId = maxMeetingId;
 		addNewPastMeeting(meeting.getContacts(), meeting.getDate(), text);
