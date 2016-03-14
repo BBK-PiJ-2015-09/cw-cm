@@ -161,6 +161,24 @@ public class ContactManagerTest {
 		assertTrue((second.before(third)));
 	}
 
+	@Test
+	public void testsGetFutureMeetingListEmpty() {
+		// Add meetings for existing contact
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.MONTH, 1);
+		manager.addFutureMeeting(manager.getContacts(1), date2);
+
+		// Add a new contact without any meetings
+		manager.addNewContact("Jon", "New contact");
+		Contact contact = manager.getContacts(2).iterator().next();
+
+		// Make sure the method doesn't return any meetings for him
+		int output = manager.getFutureMeetingList(contact).size();
+		int expected = 0;
+		assertEquals(expected, output);
+	}
+
 	@Test(expected= IllegalArgumentException.class)
 	public void testsGetFutureMeetingListWithUnknownContact() {
 		Contact unknownContact = new ContactImpl(2, "Mike", "Test notes");
