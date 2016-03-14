@@ -1,6 +1,9 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+// import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -12,7 +15,7 @@ public class ContactManagerTest {
     @Before
 	public void setup() {
 		date = Calendar.getInstance();
-		date.add(Calendar.MONTH, 1);
+		date.add(Calendar.MONTH, 2);
 		manager = new ContactManagerImpl(new CurrentTimeImpl());
 		manager.addNewContact("Jon", "Test notes");
     }
@@ -130,6 +133,29 @@ public class ContactManagerTest {
 		int output = manager.getFutureMeetingList(contact).size();
 		int expected = 2;
 		assertEquals(expected, output);
+	}
+
+	@Test
+	public void testsGetFutureMeetingListChronological() {
+		// Add the meetings
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		date.add(Calendar.MONTH, -1);
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		date.add(Calendar.MONTH, 1);
+		manager.addFutureMeeting(manager.getContacts(1), date);
+
+		// Get the contact
+		Contact contact = manager.getContacts(1).iterator().next();
+
+		// Get the meetings
+		List<Meeting> meetings = manager.getFutureMeetingList(contact);
+		Date first = meetings.get(0).getDate().getTime();
+		Date second = meetings.get(1).getDate().getTime();
+		Date third = meetings.get(2).getDate().getTime();
+
+		// Assert that they are return in chronological order
+		assertTrue((first.before(second)));
+		assertTrue((second.before(third)));
 	}
 
 	@Test
