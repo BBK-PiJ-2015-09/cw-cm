@@ -347,6 +347,7 @@ public class ContactManagerTest {
 
 	@Test
 	public void testAddMeetingNotesToPastMeeting() {
+		date.add(Calendar.YEAR, -1);
 		manager.addNewPastMeeting(manager.getContacts(1), date, "");
 		manager.addMeetingNotes(1, "This meeting occurred.");
 		String output = manager.getPastMeeting(1).getNotes();
