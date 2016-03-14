@@ -219,6 +219,19 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsGetPastMeetingListFor() {
+		date.add(Calendar.YEAR, -1);
+		manager.addNewPastMeeting(manager.getContacts(1), date, "Test notes");
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.YEAR, -2);
+		manager.addNewPastMeeting(manager.getContacts(1), date2, "Test notes");
+		Contact contact = manager.getContacts(1).iterator().next();
+		int output = manager.getPastMeetingListFor(contact).size();
+		int expected = 2;
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
 		try {
