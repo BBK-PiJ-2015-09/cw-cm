@@ -78,6 +78,15 @@ public class ContactManagerTest {
 		assertEquals(expected, output);
 	}
 
+	@Test
+	public void testsAddAnotherNewContact() {
+		manager.addNewContact("Bill", "Test notes");
+		int output = manager.addNewContact("Emily", "Test notes");
+		int expected = 2;
+		assertEquals(expected, output);
+	}
+
+
 	@Test(expected= IllegalArgumentException.class)
 	public void testsAddNewContactEmptyName() {
 		manager.addNewContact("", "Test notes");
