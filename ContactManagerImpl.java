@@ -36,7 +36,11 @@ public class ContactManagerImpl implements ContactManager {
 	public PastMeeting getPastMeeting(int id) {
 		for (PastMeeting meeting : pastMeetings) {
 			if (meeting.getId() == id) {
-				return meeting;
+				if (meeting.getDate().after(calendar.now())) {
+					throw new IllegalStateException();
+				} else {
+					return meeting;
+				}
 			}
 		}
 		return null;
