@@ -173,6 +173,17 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsGetMeetingListOn() {
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.MONTH, 1);
+		manager.addFutureMeeting(manager.getContacts(1), date2);
+		int output = manager.getMeetingListOn(date2).size();
+		int expected = 1;
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
 		try {
