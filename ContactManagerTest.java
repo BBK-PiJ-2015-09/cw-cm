@@ -370,6 +370,17 @@ public class ContactManagerTest {
 		manager.addMeetingNotes(2, "This meeting occurred.");
 	}
 
+	@Test(expected= IllegalStateException.class)
+	public void testsAddMeetingNotesPastMeetingFutureDate() {
+		// create a manager with a current time in the past
+		manager = new ContactManagerImpl(new CurrentTimePastMock());
+		manager.addNewContact("Jon", "Test notes");
+		// addPastMeeting uses the actual non-injected present for its check
+		manager.addNewPastMeeting(manager.getContacts(1), date, "Test notes");
+		// addMeetingNotes thinks it's the past, therefore the meeting is in the future, therefore throws the exception
+		manager.addMeetingNotes(1, "This meeting occurred.");
+	}
+
 	@Test
 	public void testsAddNewContact() {
 		int output = manager.addNewContact("Emily", "Test notes");
