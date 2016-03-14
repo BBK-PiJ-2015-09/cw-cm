@@ -124,6 +124,11 @@ public class ContactManagerImpl implements ContactManager {
 				meetings.add(meeting);
 			}
 		}
+		Collections.sort(meetings, new Comparator<Meeting>() {
+		  public int compare(Meeting last, Meeting next) {
+		      return last.getDate().compareTo(next.getDate());
+		  }
+		});
 		return meetings;
 	}
 
