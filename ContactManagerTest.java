@@ -335,12 +335,13 @@ public class ContactManagerTest {
 	public void testAddMeetingNotes() {
 		// create a manager with a current time in the future
 		manager = new ContactManagerImpl(new CurrentTimeFutureMock());
+		manager.addNewContact("Jon", "Test notes");
 		// addFutureMeeting uses the actual non-injected present for its check
 		manager.addFutureMeeting(manager.getContacts(1), date);
 		// addMeetingNotes thinks it's the future, therefore the meeting is in the past, therefore can transform it into PastMeeting
 		manager.addMeetingNotes(1, "This meeting occurred.");
-		int output = manager.getPastMeeting(1).getId();
-		int expected = 1;
+		int output = manager.getPastMeeting(2).getId();
+		int expected = 2;
 		assertEquals(expected, output);
 	}
 
