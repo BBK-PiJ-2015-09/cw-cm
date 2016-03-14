@@ -3,9 +3,9 @@ import static org.junit.Assert.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-// import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.io.File;
 
 public class ContactManagerTest {
 	Calendar date;
@@ -18,6 +18,12 @@ public class ContactManagerTest {
 		date.add(Calendar.MONTH, 2);
 		manager = new ContactManagerImpl(new CurrentTimeImpl());
 		manager.addNewContact("Jon", "Test notes");
+    }
+
+    @After
+	public void teardown() {
+		File file = new File("pastMeetings.csv");
+		file.delete();
     }
 
 	@Test
@@ -491,4 +497,30 @@ public class ContactManagerTest {
 		manager.getContacts(93, 94);
 	}
 
+	@Test
+	public void testsFlush() {
+		// add contacts
+		manager.addNewContact("Emily", "Test notes");
+		manager.addNewContact("Bobby", "Test notes");
+		manager.addNewContact("Amelia", "Test notes");
+
+		// add dates
+		Calendar date1 = Calendar.getInstance();
+		date1.add(Calendar.YEAR, -1);
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.MONTH, -6);
+		Calendar date3 = Calendar.getInstance();
+		date3.add(Calendar.MONTH, -1);
+
+		// add meetings
+		manager.addNewPastMeeting(manager.getContacts(1,2,3), date1, "Past Notes");
+		manager.addNewPastMeeting(manager.getContacts(1,2), date2, "Past Notes");
+		manager.addNewPastMeeting(manager.getContacts(1), date3, "Past Notes");
+
+		// save to csv
+		manager.flush();
+
+		File pastMeetings = new File("pastMeetings.csv");
+		assertTrue(pastMeetings.exists());
+	}
 }
