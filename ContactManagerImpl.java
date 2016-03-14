@@ -46,9 +46,7 @@ public class ContactManagerImpl implements ContactManager {
 	public FutureMeeting getFutureMeeting(int id) {
 		for (FutureMeeting meeting : futureMeetings) {
 			if (meeting.getId() == id) {
-				Calendar now = Calendar.getInstance();
-				now.add(Calendar.MILLISECOND, 1);
-				if (meeting.getDate().before(now)) {
+				if (meeting.getDate().before(calendar.now())) {
 					throw new IllegalArgumentException();
 				} else {
 					return meeting;
