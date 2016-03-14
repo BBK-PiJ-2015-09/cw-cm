@@ -161,6 +161,12 @@ public class ContactManagerTest {
 		assertTrue((second.before(third)));
 	}
 
+	@Test(expected= IllegalArgumentException.class)
+	public void testsGetFutureMeetingListWithUnknownContact() {
+		Contact unknownContact = new ContactImpl(2, "Mike", "Test notes");
+		manager.getFutureMeetingList(unknownContact);
+	}
+
 	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
