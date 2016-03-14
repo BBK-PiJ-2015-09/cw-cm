@@ -14,8 +14,9 @@ public class ContactManagerTest {
 		date = Calendar.getInstance();
 		date.add(Calendar.MONTH, 1);
 		contacts = new HashSet<Contact>();
-		contacts.add(new ContactImpl(1, "Jon"));
+		contacts.add(new ContactImpl(1, "Jon", "Test notes"));
 		manager = new ContactManagerImpl();
+		manager.addNewContact("Jon", "Test notes");
     }
 
 	@Test
@@ -48,10 +49,12 @@ public class ContactManagerTest {
 		manager.addFutureMeeting(contacts, date);
 	}
 
-	// @Test(expected= IllegalArgumentException.class)
-	// public void testsAddFutureMeetingWithUnknownContact() {
-	// 	manager.addFutureMeeting(contacts, date);
-	// }
+	@Test(expected= IllegalArgumentException.class)
+	public void testsAddFutureMeetingWithUnknownContact() {
+		Set<Contact> unknownContacts = new HashSet<Contact>();
+		unknownContacts.add(new ContactImpl(2, "Mike", "Test notes"));
+		manager.addFutureMeeting(contacts, date);
+	}
 
 	@Test(expected= NullPointerException.class)
 	public void testsAddFutureMeetingNullContacts() {
@@ -74,7 +77,7 @@ public class ContactManagerTest {
 	@Test
 	public void testsAddNewContact() {
 		int output = manager.addNewContact("Emily", "Test notes");
-		int expected = 1;
+		int expected = 2;
 		assertEquals(expected, output);
 	}
 
@@ -82,7 +85,7 @@ public class ContactManagerTest {
 	public void testsAddAnotherNewContact() {
 		manager.addNewContact("Bill", "Test notes");
 		int output = manager.addNewContact("Emily", "Test notes");
-		int expected = 2;
+		int expected = 3;
 		assertEquals(expected, output);
 	}
 
@@ -120,7 +123,7 @@ public class ContactManagerTest {
 		manager.addNewContact("Emily", "Test notes");
 		manager.addNewContact("Bobby", "Test notes");
 		int output = manager.getContacts("").size();
-		int expected = 2;
+		int expected = 3;
 		assertEquals(expected, output);
 	}
 
