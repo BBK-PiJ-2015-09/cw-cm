@@ -31,6 +31,11 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public PastMeeting getPastMeeting(int id) {
+		for (PastMeeting meeting : pastMeetings) {
+			if (meeting.getId() == id) {
+				return meeting;
+			}
+		}
 		return null;
 	}
 
