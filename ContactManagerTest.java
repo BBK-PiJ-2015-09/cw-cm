@@ -127,8 +127,9 @@ public class ContactManagerTest {
 	@Test
 	public void testsGetFutureMeetingList() {
 		manager.addFutureMeeting(manager.getContacts(1), date);
-		date.add(Calendar.MONTH, 1);
-		manager.addFutureMeeting(manager.getContacts(1), date);
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.MONTH, 1);
+		manager.addFutureMeeting(manager.getContacts(1), date2);
 		Contact contact = manager.getContacts(1).iterator().next();
 		int output = manager.getFutureMeetingList(contact).size();
 		int expected = 2;
@@ -137,12 +138,14 @@ public class ContactManagerTest {
 
 	@Test
 	public void testsGetFutureMeetingListChronological() {
-		// Add the meetings
+		// Add the meetings, out of chronological order
+		Calendar date2 = Calendar.getInstance();
+		date2.add(Calendar.MONTH, 3);
+		manager.addFutureMeeting(manager.getContacts(1), date2);
 		manager.addFutureMeeting(manager.getContacts(1), date);
-		date.add(Calendar.MONTH, -1);
-		manager.addFutureMeeting(manager.getContacts(1), date);
-		date.add(Calendar.MONTH, 1);
-		manager.addFutureMeeting(manager.getContacts(1), date);
+		Calendar date3 = Calendar.getInstance();
+		date3.add(Calendar.MONTH, 1);
+		manager.addFutureMeeting(manager.getContacts(1), date3);
 
 		// Get the contact
 		Contact contact = manager.getContacts(1).iterator().next();
