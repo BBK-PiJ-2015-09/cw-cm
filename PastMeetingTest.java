@@ -8,7 +8,7 @@ public class PastMeetingTest {
 	Calendar date;
 	Set<Contact> contacts;
 	String notes;
-	PastMeetingImpl meeting;
+	PastMeeting meeting;
 
     @Before
 	public void setup() {
@@ -87,11 +87,4 @@ public class PastMeetingTest {
 		assertEquals(expected, output);
 	}
 
-	@Test
-	public void testsSetNotes() {
-		meeting.setNotes("New note");
-		String output = meeting.getNotes();
-		String expected = "New note";
-		assertEquals(expected, output);
-	}
 }
