@@ -79,18 +79,22 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public List<Meeting> getFutureMeetingList(Contact contact) {
-		List<Meeting> meetings = new ArrayList<Meeting>();
-		for (Meeting meeting : futureMeetings) {
-			if (meeting.getContacts().contains(contact)) {
-				meetings.add(meeting);
+		if (!this.contacts.contains(contact)) {
+			throw new IllegalArgumentException();
+		} else {
+			List<Meeting> meetings = new ArrayList<Meeting>();
+			for (Meeting meeting : futureMeetings) {
+				if (meeting.getContacts().contains(contact)) {
+					meetings.add(meeting);
+				}
 			}
+			Collections.sort(meetings, new Comparator<Meeting>() {
+			  public int compare(Meeting last, Meeting next) {
+			      return last.getDate().compareTo(next.getDate());
+			  }
+			});
+			return meetings;
 		}
-		Collections.sort(meetings, new Comparator<Meeting>() {
-		  public int compare(Meeting last, Meeting next) {
-		      return last.getDate().compareTo(next.getDate());
-		  }
-		});
-		return meetings;
 	}
 
 	@Override
