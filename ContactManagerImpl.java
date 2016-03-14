@@ -62,6 +62,16 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public Meeting getMeeting(int id) {
+		for (Meeting meeting : futureMeetings) {
+			if (meeting.getId() == id) {
+				return meeting;
+			}
+		}
+		for (Meeting meeting : pastMeetings) {
+			if (meeting.getId() == id) {
+				return meeting;
+			}
+		}
 		return null;
 	}
 
