@@ -83,7 +83,7 @@ public class ContactManagerTest {
 	@Test(expected= IllegalArgumentException.class)
 	public void testsGetFutureMeetingWithPastDate() {
 		// create a manager with a current time in the future
-		manager = new ContactManagerImpl(new CurrentTimeMock());
+		manager = new ContactManagerImpl(new CurrentTimeFutureMock());
 		// addFutureMeeting uses the actual non-injected present for its check
 		manager.addFutureMeeting(manager.getContacts(1), date);
 		// getFutureMeeting thinks it's the future, therefore the meeting is in the past, therefore throws the exception
