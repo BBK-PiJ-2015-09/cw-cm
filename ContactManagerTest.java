@@ -122,6 +122,17 @@ public class ContactManagerTest {
 	}
 
 	@Test
+	public void testsGetFutureMeetingList() {
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		date.add(Calendar.MONTH, 1);
+		manager.addFutureMeeting(manager.getContacts(1), date);
+		Contact contact = manager.getContacts(1).iterator().next();
+		int output = manager.getFutureMeetingList(contact).size();
+		int expected = 2;
+		assertEquals(expected, output);
+	}
+
+	@Test
 	public void testsAddNewPastMeeting() {
 		date.set(Calendar.YEAR, 2014);
 		try {
