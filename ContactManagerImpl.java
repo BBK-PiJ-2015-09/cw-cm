@@ -77,7 +77,13 @@ public class ContactManagerImpl implements ContactManager {
 
 	@Override
 	public List<Meeting> getFutureMeetingList(Contact contact) {
-		return null;
+		List<Meeting> meetings = new ArrayList<Meeting>();
+		for (Meeting meeting : futureMeetings) {
+			if (meeting.getContacts().contains(contact)) {
+				meetings.add(meeting);
+			}
+		}
+		return meetings;
 	}
 
 	@Override
